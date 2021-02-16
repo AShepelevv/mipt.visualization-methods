@@ -1,5 +1,14 @@
 plugins {
     id 'java'
+    id 'application'
+}
+
+ext {
+    javaMainClass = 'ru.ashepelev.GraphicsExporter'
+}
+
+application {
+    mainClassName = javaMainClass
 }
 
 group 'org.example'
@@ -18,4 +27,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+run {
+
 }

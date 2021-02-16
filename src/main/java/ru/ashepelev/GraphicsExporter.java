@@ -1,3 +1,5 @@
+package ru.ashepelev;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +28,7 @@ public class GraphicsExporter extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(BLACK);
-        g.drawLine(100, 100, 200, 200);
+        g.drawLine(100, 100, 300, 200);
     }
 
     public static void save(JFrame frame) {
