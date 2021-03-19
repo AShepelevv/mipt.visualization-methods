@@ -4,7 +4,7 @@ plugins {
 }
 
 ext {
-    javaMainClass = 'ru.ashepelev.GraphicsExporter'
+    javaMainClass = 'ru.ashepelev.Main'
 }
 
 application {
