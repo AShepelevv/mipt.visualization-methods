@@ -1,4 +1,4 @@
-package ru.ashepelev;
+package ru.ashepelev.dto;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
