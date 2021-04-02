@@ -15,8 +15,5 @@ public class Main {
 
         // Нарисуем граф в окне
         var frame = new GraphDrawer().draw(graph);
-
-        // Передадим окно, чтобы сохранить его screenshot в plotting_result.png
-        new ImageSaver(frame).save("plotting_result.png");
     }
 }
