@@ -3,10 +3,7 @@ package ru.ashepelev;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.io.File;
-
-import static java.awt.event.WindowEvent.WINDOW_CLOSING;
 
 public class ImageSaver {
     private final JFrame frame;
@@ -28,6 +25,6 @@ public class ImageSaver {
             System.out.println("Something went wrong :(");
             exception.printStackTrace();
         }
-        frame.dispatchEvent(new WindowEvent(frame, WINDOW_CLOSING));
+//        frame.dispatchEvent(new WindowEvent(frame, WINDOW_CLOSING));
     }
 }

@@ -2,14 +2,10 @@ package ru.ashepelev;
 
 import ru.ashepelev.dto.Graph;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.io.File;
 
 import static java.awt.Color.BLACK;
-import static java.awt.event.WindowEvent.WINDOW_CLOSING;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
