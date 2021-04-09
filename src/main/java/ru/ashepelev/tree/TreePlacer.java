@@ -1,5 +1,6 @@
-package ru.ashepelev;
+package ru.ashepelev.tree;
 
+import ru.ashepelev.common.GraphPlacer;
 import ru.ashepelev.dto.Graph;
 import ru.ashepelev.dto.Node;
 
@@ -13,15 +14,16 @@ import static java.lang.Math.min;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toMap;
 
-public class GraphWorker {
+public class TreePlacer implements GraphPlacer {
     private final Graph graph;
     private final int SCALE_X = 6;
     private final int SCALE_Y = 1;
 
-    public GraphWorker(Graph graph) {
+    public TreePlacer(Graph graph) {
         this.graph = graph;
     }
 
+    @Override
     public void placeGraph() {
 
         //Получим корень дерева
@@ -72,8 +74,8 @@ public class GraphWorker {
 
         //Если лист, оставим на месте
         if (root.childIds.isEmpty()) {
-            root.x_left.put(root.y, root.x);
-            root.x_right.put(root.y, root.x);
+            root.xLeft.put(root.y, root.x);
+            root.xRight.put(root.y, root.x);
             return;
         }
 
@@ -87,8 +89,8 @@ public class GraphWorker {
         Node lastChild = graph.nodes.get(root.childIds.get(root.childIds.size() - 1));
 
         // Получим границы первого ребенка
-        root.x_left = firstChild.x_left;
-        root.x_right = firstChild.x_right;
+        root.xLeft = firstChild.xLeft;
+        root.xRight = firstChild.xRight;
 
         // Проитерируемся по детям, начиная со второго
         for (int i = 1; i < root.childIds.size(); ++i) {
@@ -96,32 +98,32 @@ public class GraphWorker {
 
             // Найдем величину, на сколько можно сдвинуть текущего ребенка к предыдущим. Пройдем по слоям,
             // найдем расстояние между поддеревьями на каждом уровне. Возьмем минимум.
-            int shift = curChild.x_left.entrySet().stream()
-                    .map(cur -> cur.getValue() - ofNullable(root.x_right.get(cur.getKey())).orElse(MIN_VALUE / 2))
+            int shift = curChild.xLeft.entrySet().stream()
+                    .map(cur -> cur.getValue() - ofNullable(root.xRight.get(cur.getKey())).orElse(MIN_VALUE / 2))
                     .reduce(MAX_VALUE / 2, Math::min) - SCALE_X;
 
 
             // Рекурсивно подвинем текущего ребенка вместе с поддеревом влево к предыдущим
             dfs(graph.nodes.get(root.childIds.get(i)), node -> {
                 node.x -= shift;
-                node.x_left = node.x_left.entrySet().stream()
+                node.xLeft = node.xLeft.entrySet().stream()
                         .collect(toMap(Map.Entry::getKey, entry -> entry.getValue() - shift));
-                node.x_right = node.x_right.entrySet().stream()
+                node.xRight = node.xRight.entrySet().stream()
                         .collect(toMap(Map.Entry::getKey, entry -> entry.getValue() - shift));
             });
 
 
             // Обновим границы текущего поддерева
-            curChild.x_left.forEach((key, value) ->
-                    root.x_left.put(key, min(ofNullable(root.x_left.get(key)).orElse(MAX_VALUE / 2), value)));
-            curChild.x_right.forEach((key, value) ->
-                    root.x_right.put(key, max(ofNullable(root.x_right.get(key)).orElse(MIN_VALUE / 2), value)));
+            curChild.xLeft.forEach((key, value) ->
+                    root.xLeft.put(key, min(ofNullable(root.xLeft.get(key)).orElse(MAX_VALUE / 2), value)));
+            curChild.xRight.forEach((key, value) ->
+                    root.xRight.put(key, max(ofNullable(root.xRight.get(key)).orElse(MIN_VALUE / 2), value)));
         }
 
         // После сжатия поддеревьев расположим вершину по середине между крайними детьми
         root.x = (firstChild.x + lastChild.x) / 2;
-        root.x_left.put(root.y, root.x);
-        root.x_right.put(root.y, root.x);
+        root.xLeft.put(root.y, root.x);
+        root.xRight.put(root.y, root.x);
     }
 
     private void dfs(Node root, Consumer<Node> consumer) {

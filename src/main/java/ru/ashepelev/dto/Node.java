@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.Map.of;
+import static java.lang.Integer.MAX_VALUE;
 
 @Data
 @NoArgsConstructor
@@ -22,9 +22,21 @@ public class Node {
     public String parentId;
     public List<String> childIds = new ArrayList<>();
 
-    public int x;
-    public int y;
+    public int x = MAX_VALUE;
+    public int y = MAX_VALUE;
 
-    public Map<Integer, Integer> x_left = new HashMap<>();
-    public Map<Integer, Integer> x_right = new HashMap<>();
+    public Map<Integer, Integer> xLeft = new HashMap<>();
+    public Map<Integer, Integer> xRight = new HashMap<>();
+
+    public int ordMark = MAX_VALUE;
+    public boolean isDummy = false;
+
+    public static Node dummy(String id, int x, int y) {
+        Node node = new Node();
+        node.isDummy = true;
+        node.id = id;
+        node.x = x;
+        node.y = y;
+        return node;
+    }
 }

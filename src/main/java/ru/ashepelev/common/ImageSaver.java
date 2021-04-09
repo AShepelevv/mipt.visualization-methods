@@ -1,4 +1,4 @@
-package ru.ashepelev;
+package ru.ashepelev.common;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

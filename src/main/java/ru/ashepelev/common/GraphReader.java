@@ -1,4 +1,4 @@
-package ru.ashepelev;
+package ru.ashepelev.common;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,8 @@ public class GraphReader {
 
         String xml = FileUtils.readFileToString(source, StandardCharsets.UTF_8);
         Graph graph = xmlMapper.readValue(xml, GraphML.class).getGraph();
-        graph.nodes = graph.node.stream().collect(toMap(n -> n.id, identity()));
+        graph.nodes = graph.node.stream()
+                .collect(toMap(n -> n.id, identity()));
         graph.edge.forEach(edge -> {
             graph.nodes.get(edge.source).childIds.add(edge.target);
             graph.nodes.get(edge.target).parentId = edge.source;
