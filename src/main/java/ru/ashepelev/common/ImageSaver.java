@@ -29,6 +29,6 @@ public class ImageSaver {
             System.out.println("Something went wrong :(");
             exception.printStackTrace();
         }
-        frame.dispatchEvent(new WindowEvent(frame, WINDOW_CLOSING));
+//        frame.dispatchEvent(new WindowEvent(frame, WINDOW_CLOSING));
     }
 }
