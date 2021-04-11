@@ -14,10 +14,10 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class GraphDrawer extends JPanel {
     private final JFrame frame = new JFrame("Plotting result");
     private Graph graph;
-    private final int PADDING = 50;
     private final int RADIUS = 3;
-    private final int SIZE_X = 1000;
-    private final int SIZE_Y = 1000;
+    private final int SIZE_X = 500;
+    private final int SIZE_Y = 500;
+    private final int PADDING = SIZE_X / 20;
     private final int ARR_SIZE = 21;
     private final int SHIFT = 10;
 
