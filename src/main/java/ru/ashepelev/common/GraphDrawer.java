@@ -61,9 +61,6 @@ public class GraphDrawer extends JPanel {
                     RenderingHints.VALUE_ANTIALIAS_ON);
             Font font = new Font("Serif", Font.PLAIN, 10);
             g2.setFont(font);
-
-//            g2.drawString(node.id, 40, 120);
-//            System.out.println(node.x + " " + node.y);
             g2.drawString(node.id, x + SHIFT, y + SHIFT / 2);
         });
 
@@ -76,7 +73,7 @@ public class GraphDrawer extends JPanel {
             if (graph.nodes.get(childId).isDummy) {
                 g.drawLine(x1, y1, x2, y2);
             } else {
-                drawArrow(g,x1, y1, x2, y2);
+                drawArrow(g, x1, y1, x2, y2);
             }
         }));
     }

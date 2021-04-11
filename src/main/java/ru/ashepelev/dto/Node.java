@@ -22,8 +22,8 @@ public class Node {
     public String parentId;
     public List<String> childIds = new ArrayList<>();
 
-    public int x = MAX_VALUE;
-    public int y = MAX_VALUE;
+    public int x = MAX_VALUE / 4;
+    public int y = MAX_VALUE / 4;
 
     public Map<Integer, Integer> xLeft = new HashMap<>();
     public Map<Integer, Integer> xRight = new HashMap<>();
