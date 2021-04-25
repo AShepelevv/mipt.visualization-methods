@@ -1,6 +1,6 @@
 package ru.ashepelev.tree;
 
-import ru.ashepelev.common.GraphPlacer;
+import ru.ashepelev.common.Placer;
 import ru.ashepelev.dto.Graph;
 import ru.ashepelev.dto.Node;
 
@@ -14,7 +14,7 @@ import static java.lang.Math.min;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toMap;
 
-public class TreePlacer implements GraphPlacer {
+public class TreePlacer implements Placer {
     private final Graph graph;
     private final int SCALE_X = 6;
     private final int SCALE_Y = 1;
@@ -24,7 +24,7 @@ public class TreePlacer implements GraphPlacer {
     }
 
     @Override
-    public void placeGraph() {
+    public void place() {
 
         //Получим корень дерева
         Node root = getRoot();

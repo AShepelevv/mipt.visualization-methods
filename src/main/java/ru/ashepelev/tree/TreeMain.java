@@ -13,7 +13,7 @@ public class TreeMain {
         Graph graph = new GraphReader("tree.xml").read();
 
         // Разметим граф алгоритмом LayeredTree
-        new TreePlacer(graph).placeGraph();
+        new TreePlacer(graph).place();
 
         // Нарисуем граф в окне
         var frame = new GraphDrawer().draw(graph);

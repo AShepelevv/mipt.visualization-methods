@@ -39,4 +39,10 @@ public class Node {
         node.y = y;
         return node;
     }
+
+    public static Node withId(String id) {
+        Node node = new Node();
+        node.id = id;
+        return node;
+    }
 }

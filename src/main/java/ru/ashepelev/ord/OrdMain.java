@@ -13,7 +13,7 @@ public class OrdMain {
         Graph graph = new GraphReader("ord.xml").read();
 
         // Разметим граф алгоритмом LayeredTree
-        new OrdPlacer(graph).placeGraph();
+        new OrdPlacer(graph).place();
 
         // Нарисуем граф в окне
         var frame = new GraphDrawer().draw(graph);

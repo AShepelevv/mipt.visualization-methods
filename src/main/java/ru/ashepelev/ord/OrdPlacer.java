@@ -1,6 +1,6 @@
 package ru.ashepelev.ord;
 
-import ru.ashepelev.common.GraphPlacer;
+import ru.ashepelev.common.Placer;
 import ru.ashepelev.dto.Edge;
 import ru.ashepelev.dto.Graph;
 import ru.ashepelev.dto.Node;
@@ -20,7 +20,7 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.Stream.concat;
 import static ru.ashepelev.dto.Node.dummy;
 
-public class OrdPlacer implements GraphPlacer {
+public class OrdPlacer implements Placer {
     private final Graph graph;
     private final int X_SCALE = 1000;
     private final int Y_SCALE = 1000;
@@ -31,7 +31,7 @@ public class OrdPlacer implements GraphPlacer {
     }
 
     @Override
-    public void placeGraph() {
+    public void place() {
         // Топологически отсортируем вершины
         sort();
         // Расположим граф методом dummy вершин
